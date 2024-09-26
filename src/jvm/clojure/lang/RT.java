@@ -412,7 +412,7 @@ public static void loadResourceScript(Class c, String name, boolean failIfNotFou
 static public long lastModified(URL url, String libfile) throws IOException{
 	URLConnection connection = url.openConnection();
 	try {
-		if (url.getProtocol().equals("jar"))
+		if (connection instanceof JarURLConnection)
 			return ((JarURLConnection) connection).getJarFile().getEntry(libfile).getTime();
 		else
 			return connection.getLastModified();
